@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Yu-Chun's <%= title %></title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>All The Avengers</h1>
+        <% data.avengers.forEach(avenger => { %>
+        <p><%= avenger.name %></p>
+        <% }); %>
+
+        <h2>Add a new avenger by name</h2>
+        <div>
+            <input type="text" id="newName">
+            <button onclick="submitName()" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+    <!-- include javascript code here -->
+    <!-- <script src="../frontend/client-side.js"></script> -->
+    <script>
+        function submitName() {
+            console.log("clicked successfully");
+        }
+    </script>
+</body>
+</html>
