@@ -20,6 +20,7 @@
         <h2>Add a new avenger by name</h2>
         <div>
             <input type="text" id="newName">
+            <p id="errorMessage"></p>
             <button onclick="submitName()" class="btn btn-primary">Submit</button>
         </div>
     </div>
@@ -27,9 +28,51 @@
     <!-- include javascript code here -->
     <!-- <script src="../frontend/client-side.js"></script> -->
     <script>
+        function saveToData() {
+            fetch('http://localhost:3000/fetchAll') // doesn't /fetchAll return JSON data already? why do we need to do another res.json()?
+            // .then(res => res.json())
+            // .then(data => {
+            //     // const newName = {'name': name}
+            //     // dummyData.avengers.push(newName);
+            // })
+            // .catch()
+        }
+
         function submitName() {
+            // get the input value of the new name entered by the user
+            const newName = document.getElementById("newName").value;
+
+            fetch('http://localhost:3000/insert', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: newName
+                    }) // turn the value into JSON format
+                })
+                .then(res => {
+                    if (res == null) {
+                        console.log("duplcation name error message returned")
+
+                        document.getElementById("errorMessage") = "Name Duplcation";
+                        return;
+                    }
+
+                    console.log("insert successfully.");
+                    // clear the input after submitting the form
+                    document.getElementById("newName").value = '';
+
+                    // save the new name into data, so it will display on the screen
+                    saveToData();
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
             console.log("clicked successfully");
         }
     </script>
 </body>
+
 </html>
