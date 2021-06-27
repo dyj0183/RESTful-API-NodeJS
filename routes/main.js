@@ -5,8 +5,8 @@ const router = express.Router();
 const dummyData = require('../data/dummy-data.json')
 
 router.get('/fetchAll', (req, res, next) => {
-    // res.json(dummyData);
-    res.redirect('/');
+    res.json(dummyData);
+    // res.redirect('/');
 });
 
 router.post('/insert', (req, res, next) => {
@@ -15,6 +15,7 @@ router.post('/insert', (req, res, next) => {
      ************************************************/
 
     const name = req.body.name;
+    const age = req.body.age;
 
     // check for duplication
     dummyData.avengers.forEach(avenger => {
@@ -24,8 +25,10 @@ router.post('/insert', (req, res, next) => {
         }
     })
     
-    const newName = {name: name}
-    dummyData.avengers.push(newName);
+    // const newName = {name: name}
+    // const newAge = {name: name}
+    const newAvenger = {name: name, age: age}
+    dummyData.avengers.push(newAvenger);
     console.log("Inserted " + name + " successfully!");
 
     res.json({

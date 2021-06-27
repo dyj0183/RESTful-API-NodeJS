@@ -1,22 +1,28 @@
 {
         "avengers": [
             {
-                "name": "Tony Stark"
+                "name": "Tony Stark",
+                "age": "28"
             },
             {
-                "name": "Steve Rogers"
+                "name": "Steve Rogers",
+                "age": "26"
             },
             {
-                "name": "Thor Odinson"
+                "name": "Thor Odinson",
+                "age": "31"
             },
             {
-                "name": "Bruce Banner"
+                "name": "Bruce Banner",
+                "age": "35"
             },
             {
-                "name": "Natasha Romanova"
+                "name": "Natasha Romanova",
+                "age": "32"
             },
             {
-                "name": "Clint Barton"
+                "name": "Clint Barton",
+                "age": "27"
             }
         ]
 }
