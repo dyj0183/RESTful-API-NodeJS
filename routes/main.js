@@ -17,29 +17,65 @@ router.post('/insert', (req, res, next) => {
     const name = req.body.name;
     const age = req.body.age;
 
-    // check for duplication
-    dummyData.avengers.forEach(avenger => {
-        if (avenger.name == name) {
-            console.log("name duplication is not allowed.")
-            // return res.status(422).json({message: "name duplication is not allowed."});
+    const newAvenger = {
+        name: name,
+        age: age
+    }
+
+    let array = dummyData.avengers;
+    console.log(array);
+
+    let hasDuplication;
+
+    array.forEach(avenger => {
+        if (avenger.name !== name) {
+            hasDuplication = false;
+            console.log("No duplication!")
+        } else {
+            hasDuplication = true;
+            console.log("There is a duplicated name.");
         }
     })
-    
-    // const newName = {name: name}
-    // const newAge = {name: name}
-    const newAvenger = {name: name, age: age}
-    dummyData.avengers.push(newAvenger);
-    console.log("Inserted " + name + " successfully!");
 
-    res.json({
-        message: 'Post created successfully',
-        data: dummyData
-    })
-});
+    if (!hasDuplication) {
+        dummyData.avengers.push(newAvenger);
+
+        console.log("Inserted " + name + " successfully!");
+
+        res.json({
+            message: 'Post created successfully',
+            data: dummyData
+        })
+    } else {
+        console.log("There is a duplicated name.");
+    }
+
+    // SOME Method
+
+    // let array = dummyData.avengers;
+    // console.log(array);
+
+    // // return true if there is any duplication
+    // function hasDuplication(array) {
+    //     return array.some(avenger => array.indexOf(avenger.name) !== array.lastIndexOf(avenger.name));
+    // }
+
+    // // if there is NO duplcation
+    // if (!hasDuplication(array)) {
+    //     console.log("Inserted " + name + " successfully!");
+
+    //     res.json({
+    //         message: 'Post created successfully',
+    //         data: dummyData
+    //     })
+    // } else {
+    //     console.log("name duplication is not allowed.");
+    // }
+})
 
 router.get('/', (req, res, next) => {
 
-    console.log(dummyData);
+    //console.log(dummyData);
 
     res.render('week10', {
         title: 'Week 10 Assignment',

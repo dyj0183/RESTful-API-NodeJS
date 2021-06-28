@@ -16,7 +16,7 @@
             <h1>Welcome to Yu-Chun's RESTful API Page!</h1>
             <h1>Here Are All The Avengers</h1>
         </div>
-        <table class="table table-bordered table-dark table-hover table-striped">
+        <table class="table table-bordered table-dark table-hover table-striped" id="table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -25,9 +25,9 @@
             </thead>
             <tbody>
                 <% data.avengers.forEach(avenger => { %>
-                </tr>
-                <td><%= avenger.name %></td>
-                <td><%= avenger.age %></td>
+                <tr>
+                    <td><%= avenger.name %></td>
+                    <td><%= avenger.age %></td>
                 </tr>
                 <% }); %>
             </tbody>
@@ -52,16 +52,16 @@
     <!-- include javascript code here -->
     <!-- <script src="../frontend/client-side.js"></script> -->
     <script>
-        function saveToData() {
-            fetch(
-                'http://localhost:3000/fetchAll'
-            ) // doesn't /fetchAll return JSON data already? why do we need to do another res.json()?
-            // .then(res => res.json())
-            // .then(data => {
-            //     // const newName = {'name': name}
-            //     // dummyData.avengers.push(newName);
-            // })
-            // .catch()
+        function saveToData(lastItem) {
+            console.log(lastItem);
+
+            const table = document.getElementById("table");
+
+            const tableRow = document.createElement('tr');
+            tableRow.innerHTML = `<td>${lastItem.name}</td>
+                <td>${lastItem.age}</td>`
+
+            table.appendChild(tableRow);
         }
 
         function submitName() {
@@ -79,21 +79,18 @@
                         age: newAge
                     }) // turn the value into JSON format
                 })
-                .then(res => {
-                    // if (res == null) {
-                    //     console.log("duplcation name error message returned")
-
-                    //     document.getElementById("errorMessage") = "Name Duplcation";
-                    //     return;
-                    // }
-
+                .then(result => result.json())
+                .then(fullData => {
+                    console.log(fullData);
                     console.log("insert successfully.");
                     // clear the input after submitting the form
                     document.getElementById("newName").value = '';
                     document.getElementById("newAge").value = '';
 
                     // save the new name into data, so it will display on the screen
-                    saveToData();
+                    let dataLength = fullData.data.avengers.length;
+                    let lastItem = fullData.data.avengers[dataLength - 1];
+                    saveToData(lastItem);
                 })
                 .catch(err => {
                     console.log(err);
