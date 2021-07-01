@@ -64,6 +64,8 @@ router.post('/insert', (req, res, next) => {
     if (!hasDuplication(array)) {
         console.log("Inserted " + name + " successfully!");
 
+        dummyData.avengers.push(newAvenger);
+
         res.json({
             message: 'Post created successfully',
             data: dummyData
