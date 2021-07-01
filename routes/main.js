@@ -22,46 +22,24 @@ router.post('/insert', (req, res, next) => {
         age: age
     }
 
-    let array = dummyData.avengers;
-    console.log(array);
-
-    let hasDuplication;
-
-    array.forEach(avenger => {
-        if (avenger.name !== name) {
-            hasDuplication = false;
-            console.log("No duplication!")
-        } else {
-            hasDuplication = true;
-            console.log("There is a duplicated name.");
-        }
-    })
-
-    if (!hasDuplication) {
-        dummyData.avengers.push(newAvenger);
-
-        console.log("Inserted " + name + " successfully!");
-
-        res.json({
-            message: 'Post created successfully',
-            data: dummyData
-        })
-    } else {
-        console.log("There is a duplicated name.");
-    }
-
-    // SOME Method
-
     // let array = dummyData.avengers;
     // console.log(array);
 
-    // // return true if there is any duplication
-    // function hasDuplication(array) {
-    //     return array.some(avenger => array.indexOf(avenger.name) !== array.lastIndexOf(avenger.name));
-    // }
+    // let hasDuplication;
 
-    // // if there is NO duplcation
-    // if (!hasDuplication(array)) {
+    // array.forEach(avenger => {
+    //     if (avenger.name !== name) {
+    //         hasDuplication = false;
+    //         console.log("No duplication!")
+    //     } else {
+    //         hasDuplication = true;
+    //         console.log("There is a duplicated name.");
+    //     }
+    // })
+
+    // if (!hasDuplication) {
+    //     dummyData.avengers.push(newAvenger);
+
     //     console.log("Inserted " + name + " successfully!");
 
     //     res.json({
@@ -69,8 +47,30 @@ router.post('/insert', (req, res, next) => {
     //         data: dummyData
     //     })
     // } else {
-    //     console.log("name duplication is not allowed.");
+    //     console.log("There is a duplicated name.");
     // }
+
+    // SOME Method
+
+    let array = dummyData.avengers;
+    console.log(array);
+
+    // return true if there is any duplication
+    function hasDuplication(array) {
+        return array.some(avenger => avenger.name === name);
+    }
+
+    // if there is NO duplcation
+    if (!hasDuplication(array)) {
+        console.log("Inserted " + name + " successfully!");
+
+        res.json({
+            message: 'Post created successfully',
+            data: dummyData
+        })
+    } else {
+        console.log("name duplication is not allowed.");
+    }
 })
 
 router.get('/', (req, res, next) => {
