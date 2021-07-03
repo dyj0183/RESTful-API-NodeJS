@@ -78,7 +78,7 @@
                         age: newAge
                     }) // turn the value into JSON format
                 })
-                .then(result => result.json())
+                .then(result => result.json()) // isn't the main.js already returning json data?
                 .then(fullData => {
                     console.log(fullData);
                     console.log("insert successfully.");

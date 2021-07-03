@@ -46,6 +46,10 @@ router.post('/insert', (req, res, next) => {
     } else {
         document.getElementById('nameDuplication').innerHTML = "Name already exists. Please pick a different name!";
         console.log("name duplication is not allowed.");
+        res.json({
+            message: 'Name duplicatin, post did not create successfully',
+            data: dummyData
+        })
     }
 })
 
