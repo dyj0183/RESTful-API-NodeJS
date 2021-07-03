@@ -22,7 +22,6 @@ router.post('/insert', (req, res, next) => {
         age: age
     }
 
-
     // SOME Method
 
     let array = dummyData.avengers;
@@ -46,10 +45,11 @@ router.post('/insert', (req, res, next) => {
     } else {
         document.getElementById('nameDuplication').innerHTML = "Name already exists. Please pick a different name!";
         console.log("name duplication is not allowed.");
-        res.json({
-            message: 'Name duplicatin, post did not create successfully',
-            data: dummyData
-        })
+        // There is a bug when I tried to display this error message
+        // res.json({
+        //     message: 'Name duplicatin, post did not create successfully',
+        //     data: dummyData
+        // })
     }
 })
 
