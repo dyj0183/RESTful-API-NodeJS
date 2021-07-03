@@ -22,33 +22,6 @@ router.post('/insert', (req, res, next) => {
         age: age
     }
 
-    // let array = dummyData.avengers;
-    // console.log(array);
-
-    // let hasDuplication;
-
-    // array.forEach(avenger => {
-    //     if (avenger.name !== name) {
-    //         hasDuplication = false;
-    //         console.log("No duplication!")
-    //     } else {
-    //         hasDuplication = true;
-    //         console.log("There is a duplicated name.");
-    //     }
-    // })
-
-    // if (!hasDuplication) {
-    //     dummyData.avengers.push(newAvenger);
-
-    //     console.log("Inserted " + name + " successfully!");
-
-    //     res.json({
-    //         message: 'Post created successfully',
-    //         data: dummyData
-    //     })
-    // } else {
-    //     console.log("There is a duplicated name.");
-    // }
 
     // SOME Method
 
@@ -71,6 +44,7 @@ router.post('/insert', (req, res, next) => {
             data: dummyData
         })
     } else {
+        document.getElementById('nameDuplication').innerHTML = "Name already exists. Please pick a different name!";
         console.log("name duplication is not allowed.");
     }
 })
