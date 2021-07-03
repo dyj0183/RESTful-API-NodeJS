@@ -51,6 +51,17 @@
     <!-- include javascript code here -->
     <!-- <script src="../frontend/client-side.js"></script> -->
     <script>
+        // socket.io
+        // Initialize socket.io
+        const socket = io('/')
+
+        // Repopulate the list when the server broadcasts an event
+        socket.on('update-list', () => {
+            saveToData()
+        })
+
+
+
         function saveToData(lastItem) {
             console.log(lastItem);
 
