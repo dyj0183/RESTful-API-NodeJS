@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <title>Yu-Chun's <%= title %></title>
 </head>
-<!-- use socket.io client -->
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io();
-</script>
+
 <body>
     <div style="text-align: center;">
         <div class="jumbotron">
@@ -52,11 +48,13 @@
         </div>
     </div>
 
-    <!-- include javascript code here -->
-    <!-- <script src="../frontend/client-side.js"></script> -->
+    <!-- use socket.io client -->
+    <script src="/socket.io/socket.io.js"></script>
     <script>
-        // const openSocket = require("socket.io-client");
+        var socket = io();
+    </script>
 
+    <script>
         // // socket.io
         // // Initialize socket.io
         // const socket = io('/')
@@ -65,8 +63,6 @@
         // socket.on('update-list', () => {
         //     saveToData()
         // })
-
-
 
         function saveToData(lastItem) {
             console.log(lastItem);
@@ -118,5 +114,4 @@
         }
     </script>
 </body>
-
 </html>
