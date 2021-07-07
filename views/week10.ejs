@@ -100,7 +100,9 @@
                     let lastItem = fullData.data.avengers[dataLength - 1];
                     saveToData(lastItem);
 
-                    openSocket('https://restful-api-yuchun.herokuapp.com/');
+                    // Tell the server to broadcast changes to other users
+                    socket.emit('new-name')
+                    // openSocket('https://restful-api-yuchun.herokuapp.com/');
                 })
                 .catch(err => {
                     console.log(err);
@@ -110,4 +112,5 @@
         }
     </script>
 </body>
+
 </html>
