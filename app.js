@@ -32,9 +32,10 @@ const server = app.listen(process.env.PORT||3000, () => {
 const io = require('socket.io')(server);
 
 io.on('connection', socket => {
-    console.log('Client connected')
-    // socket.on('new-name', () => {
-    //     // if a user added a name, all the other users on different devices and places will see the updated list cause we use "emit"
-    //     socket.broadcast.emit('update-list')
-    // })
+    console.log('Client connected');
+
+    socket.on('new-name', () => {
+        // if a user added a name, all the other users on different devices and places will see the updated list cause we use "emit"
+        socket.broadcast.emit('updateAvengerList');
+    })
 })

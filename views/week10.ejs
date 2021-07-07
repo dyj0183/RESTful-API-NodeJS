@@ -48,21 +48,17 @@
         </div>
     </div>
 
-    <!-- use socket.io client -->
+    <!-- use socket.io -->
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        var socket = io();
+        let socket = io();
     </script>
 
     <script>
-        // // socket.io
-        // // Initialize socket.io
-        // const socket = io('/')
-
-        // // Repopulate the list when the server broadcasts an event
-        // socket.on('update-list', () => {
-        //     saveToData()
-        // })
+        // update the list when the server broadcasts an event
+        socket.on('updateAvengerList', () => {
+            saveToData()
+        })
 
         function saveToData(lastItem) {
             console.log(lastItem);
