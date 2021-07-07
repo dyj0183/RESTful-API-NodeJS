@@ -51,14 +51,16 @@
     <!-- include javascript code here -->
     <!-- <script src="../frontend/client-side.js"></script> -->
     <script>
-        // socket.io
-        // Initialize socket.io
-        const socket = io('/')
+        const openSocket = require("socket.io-client");
 
-        // Repopulate the list when the server broadcasts an event
-        socket.on('update-list', () => {
-            saveToData()
-        })
+        // // socket.io
+        // // Initialize socket.io
+        // const socket = io('/')
+
+        // // Repopulate the list when the server broadcasts an event
+        // socket.on('update-list', () => {
+        //     saveToData()
+        // })
 
 
 
@@ -101,6 +103,8 @@
                     let dataLength = fullData.data.avengers.length;
                     let lastItem = fullData.data.avengers[dataLength - 1];
                     saveToData(lastItem);
+
+                    openSocket('https://restful-api-yuchun.herokuapp.com/');
                 })
                 .catch(err => {
                     console.log(err);
