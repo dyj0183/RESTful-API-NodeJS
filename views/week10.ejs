@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <title>Yu-Chun's <%= title %></title>
 </head>
-
+<!-- use socket.io client -->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
 <body>
     <div style="text-align: center;">
         <div class="jumbotron">
@@ -51,7 +55,7 @@
     <!-- include javascript code here -->
     <!-- <script src="../frontend/client-side.js"></script> -->
     <script>
-        const openSocket = require("socket.io-client");
+        // const openSocket = require("socket.io-client");
 
         // // socket.io
         // // Initialize socket.io
